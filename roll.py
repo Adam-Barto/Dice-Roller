@@ -32,9 +32,10 @@ def roll(number) -> str:
 
 
 def game():
-    enter = input('Would you like to roll again? ')
+    enter = input('Would you like to roll again? (y/n) ')
     if enter.lower().find('y') != -1:
-        roll(int(user()))
+        print(roll(int(user())))
+        game()
     else:
         print('Thanks for Playing')
 

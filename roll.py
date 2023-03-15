@@ -7,32 +7,37 @@
 import random
 import sys
 
-
-def die():
-    return random.randint(1, 6)
-
-
-# print(die())
-
-number_of_times = 1
-
 val = sys.argv
 
 
-def roll():
-    print(die())
+def handling_the_length_of_sysargv(x) -> int:
+    if type(x) == int:
+        return x
+    elif len(x) > 1:
+        return x[1]
+    else:
+        return 1
 
 
-def rolln(number):
-    print_this = ""
-    while number > 0:
-        print_this.join(str(die()))
-        number = number - 1
-    print(print_this)
+def user() -> str:
+    return input('How many die will you roll? ')
 
 
-if len(val) == 2:
-    rolln(int(val[1]))
-else:
-    roll()
+def roll(number) -> str:
+    number_of_times = handling_the_length_of_sysargv(number)
+    if int(number_of_times) <= 1:
+        return str(random.randint(1, 6))
+    else:
+        return roll(int(number_of_times) - 1) + ', ' + str(random.randint(1, 6))
 
+
+def game():
+    enter = input('Would you like to roll again? ')
+    if enter.lower().find('y') != -1:
+        roll(int(user()))
+    else:
+        print('Thanks for Playing')
+
+
+print(roll(val))
+game()

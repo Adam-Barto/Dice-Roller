@@ -4,7 +4,7 @@
 # roll 2 - produce two numbers 1-6 and print them
 # roll 3 - produce three numbers and print them.
 #
-import random
+from random import randint
 import sys
 
 val = sys.argv
@@ -23,12 +23,12 @@ def user() -> str:
     return input('How many die will you roll? ')
 
 
-def roll(number) -> str:
+def roll(number) -> str: #using it with number = 1 works. Do this in the future.
     number_of_times = handling_the_length_of_sysargv(number)
     if int(number_of_times) <= 1:
-        return str(random.randint(1, 6))
+        return str(randint(1, 6))
     else:
-        return roll(int(number_of_times) - 1) + ', ' + str(random.randint(1, 6))
+        return roll(int(number_of_times) - 1) + ', ' + str(randint(1, 6))
 
 
 def game():
